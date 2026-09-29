@@ -1,0 +1,26 @@
+[
+  {
+    "id": "TC001",
+    "category": "Sinhala",
+    "input": "මගේ order එක තාම ආවේ නැහැ.",
+    "expected_intent": "order_status",
+    "expected_response": "Customer is asking about an order that has not arrived.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC002",
+    "category": "Singlish",
+    "input": "mage order eka thama awe na",
+    "expected_intent": "order_status",
+    "expected_response": "Customer is asking about an order that has not arrived.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC003",
+    "category": "Code-Mixed",
+    "input": "mage order eka still delivered une na, can you check?",
+    "expected_intent": "order_status",
+    "expected_response": "Customer wants the delivery status of an order.",
+    "difficulty": "medium"
+  }
+]
