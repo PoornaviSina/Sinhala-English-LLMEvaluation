@@ -1,32 +1,86 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# ==========================================
+# Go
+# ==========================================
+
+# Compiled binary files
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
+# Go test binary
 *.test
 
-# Code coverage profiles and other test artifacts
+# Output of go coverage tool
 *.out
-coverage.*
-*.coverprofile
-profile.cov
-
-# Dependency directories (remove the comment below to include it)
-# vendor/
 
 # Go workspace file
 go.work
 go.work.sum
 
-# env file
-.env
+# Build directories
+bin/
+dist/
+build/
 
-# Editor/IDE
-# .idea/
-# .vscode/
+
+# ==========================================
+# Environment Variables / Secrets
+# ==========================================
+
+# Never commit API keys or secrets
+.env
+.env.*
+!.env.example
+
+# Local secret/config files
+*.key
+*.pem
+secrets.json
+credentials.json
+
+
+# ==========================================
+# IDE / Editor
+# ==========================================
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Vim
+*.swp
+*.swo
+
+
+# ==========================================
+# Operating System Files
+# ==========================================
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+*.tmp
+*.temp
+*.log
+*~
+
+
+# ==========================================
+# Evaluation Temporary / Backup Files
+# ==========================================
+
+# Local backup created before automatic quality scoring
+results/quality_reviews_before_autoscore.json

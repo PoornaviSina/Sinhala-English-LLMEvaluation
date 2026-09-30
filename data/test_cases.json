@@ -9,18 +9,485 @@
   },
   {
     "id": "TC002",
-    "category": "Singlish",
-    "input": "mage order eka thama awe na",
-    "expected_intent": "delivery_issue",
-    "expected_response": "Customer is reporting that the order has not arrived yet.",
-    "difficulty": "medium"
+    "category": "English",
+    "input": "Can you tell me the current status of my order?",
+    "expected_intent": "order_status",
+    "expected_response": "Customer is asking for the current status of an order.",
+    "difficulty": "easy"
   },
   {
     "id": "TC003",
-    "category": "Code-Mixed",
-    "input": "mage order eka still delivered une na, can you check?",
-    "expected_intent": "delivery_issue",
-    "expected_response": "Customer is reporting that the order has not been delivered yet.",
+    "category": "Singlish",
+    "input": "mage order eka dan koheda thiyenne?",
+    "expected_intent": "order_status",
+    "expected_response": "Customer wants to know the current status of an order.",
     "difficulty": "medium"
+  },
+  {
+    "id": "TC004",
+    "category": "Code-Mixed",
+    "input": "Can you check mage order eke current status eka?",
+    "expected_intent": "order_status",
+    "expected_response": "Customer wants the current status of an order.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC005",
+    "category": "Noisy",
+    "input": "plz chek my oder status",
+    "expected_intent": "order_status",
+    "expected_response": "Customer wants the current status of an order.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC006",
+    "category": "Sinhala",
+    "input": "මට මේ order එක cancel කරන්න ඕනේ.",
+    "expected_intent": "cancel_order",
+    "expected_response": "Customer wants to cancel an order.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC007",
+    "category": "English",
+    "input": "I want to cancel the order I placed this morning.",
+    "expected_intent": "cancel_order",
+    "expected_response": "Customer wants to cancel an order.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC008",
+    "category": "Singlish",
+    "input": "mama dapu order eka cancel karanna puluwanda?",
+    "expected_intent": "cancel_order",
+    "expected_response": "Customer is asking to cancel an order.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC009",
+    "category": "Code-Mixed",
+    "input": "I changed my mind, me order eka cancel karanna.",
+    "expected_intent": "cancel_order",
+    "expected_response": "Customer wants to cancel an order.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC010",
+    "category": "Noisy",
+    "input": "cncel my oder pls i dont want it",
+    "expected_intent": "cancel_order",
+    "expected_response": "Customer wants to cancel an order.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC011",
+    "category": "Sinhala",
+    "input": "මම ගත්ත item එක ආපහු return කරන්න ඕනේ.",
+    "expected_intent": "return_item",
+    "expected_response": "Customer wants to return a purchased item.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC012",
+    "category": "English",
+    "input": "How can I return the item I purchased?",
+    "expected_intent": "return_item",
+    "expected_response": "Customer wants information about returning an item.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC013",
+    "category": "Singlish",
+    "input": "me item eka apahu return karanne kohomada?",
+    "expected_intent": "return_item",
+    "expected_response": "Customer wants to return an item.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC014",
+    "category": "Code-Mixed",
+    "input": "This doesn't suit me, item eka return karanna one.",
+    "expected_intent": "return_item",
+    "expected_response": "Customer wants to return an item.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC015",
+    "category": "Noisy",
+    "input": "how do i retrn this itm",
+    "expected_intent": "return_item",
+    "expected_response": "Customer wants to return an item.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC016",
+    "category": "Sinhala",
+    "input": "මට මේ purchase එකට refund එකක් ඕනේ.",
+    "expected_intent": "refund_request",
+    "expected_response": "Customer is requesting a refund.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC017",
+    "category": "English",
+    "input": "I would like my money back for this purchase.",
+    "expected_intent": "refund_request",
+    "expected_response": "Customer is requesting a refund.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC018",
+    "category": "Singlish",
+    "input": "mata mekata salli apahu ganna one",
+    "expected_intent": "refund_request",
+    "expected_response": "Customer wants their money refunded.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC019",
+    "category": "Code-Mixed",
+    "input": "Product eka epa, I need my money back.",
+    "expected_intent": "refund_request",
+    "expected_response": "Customer wants a refund for a product.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC020",
+    "category": "Noisy",
+    "input": "need refnd money bak pls",
+    "expected_intent": "refund_request",
+    "expected_response": "Customer is requesting a refund.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC021",
+    "category": "Sinhala",
+    "input": "මගේ payment එක complete වෙන්නේ නැහැ.",
+    "expected_intent": "payment_issue",
+    "expected_response": "Customer is experiencing a payment problem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC022",
+    "category": "English",
+    "input": "My card keeps getting declined when I try to pay.",
+    "expected_intent": "payment_issue",
+    "expected_response": "Customer is experiencing a payment problem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC023",
+    "category": "Singlish",
+    "input": "payment eka yanne na card eka decline wenawa",
+    "expected_intent": "payment_issue",
+    "expected_response": "Customer's payment is being declined.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC024",
+    "category": "Code-Mixed",
+    "input": "I tried twice but payment eka fail wenawa.",
+    "expected_intent": "payment_issue",
+    "expected_response": "Customer is experiencing repeated payment failure.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC025",
+    "category": "Noisy",
+    "input": "paymnt faild but card is ok",
+    "expected_intent": "payment_issue",
+    "expected_response": "Customer is reporting a failed payment.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC026",
+    "category": "Sinhala",
+    "input": "මට ලැබුණු product එක කැඩිලා තියෙනවා.",
+    "expected_intent": "damaged_item",
+    "expected_response": "Customer received a damaged product.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC027",
+    "category": "English",
+    "input": "The product arrived broken inside the package.",
+    "expected_intent": "damaged_item",
+    "expected_response": "Customer received a damaged product.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC028",
+    "category": "Singlish",
+    "input": "mata labuna item eka kadila",
+    "expected_intent": "damaged_item",
+    "expected_response": "Customer received a damaged item.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC029",
+    "category": "Code-Mixed",
+    "input": "Package eka open karaddi product eka broken.",
+    "expected_intent": "damaged_item",
+    "expected_response": "Customer found the product damaged when opening the package.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC030",
+    "category": "Noisy",
+    "input": "itm arived brokn",
+    "expected_intent": "damaged_item",
+    "expected_response": "Customer received a broken item.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC031",
+    "category": "Sinhala",
+    "input": "මම order කරපු එක නෙවෙයි මට ලැබුණේ.",
+    "expected_intent": "wrong_item",
+    "expected_response": "Customer received an item different from what they ordered.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC032",
+    "category": "English",
+    "input": "You sent me a different item from the one I ordered.",
+    "expected_intent": "wrong_item",
+    "expected_response": "Customer received the wrong item.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC033",
+    "category": "Singlish",
+    "input": "mama order karapu item eka nemei awe",
+    "expected_intent": "wrong_item",
+    "expected_response": "Customer received the wrong item.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC034",
+    "category": "Code-Mixed",
+    "input": "Wrong product ekak deliver karala, this isn't what I ordered.",
+    "expected_intent": "wrong_item",
+    "expected_response": "Customer received a different product from the one ordered.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC035",
+    "category": "Noisy",
+    "input": "u sent rong itm not wat i orderd",
+    "expected_intent": "wrong_item",
+    "expected_response": "Customer received the wrong item.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC036",
+    "category": "Sinhala",
+    "input": "delivery date එක පහු වෙලාත් parcel එක තාම ආවේ නැහැ.",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer reports that the parcel has not arrived after the expected delivery date.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC037",
+    "category": "English",
+    "input": "The expected delivery date was three days ago and my package still hasn't arrived.",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer is reporting a delayed delivery.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC038",
+    "category": "Singlish",
+    "input": "delivery date eka pahu wela parcel eka thama awe na",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer is reporting a delayed delivery.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC039",
+    "category": "Code-Mixed",
+    "input": "It's already past the delivery date, parcel eka still awe na.",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer is reporting that a parcel is overdue.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC040",
+    "category": "Noisy",
+    "input": "delivry was due 3 days ago stil no pakage",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer is reporting a delayed delivery.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC041",
+    "category": "Sinhala",
+    "input": "මගේ order එකේ delivery address එක වෙනස් කරන්න ඕනේ.",
+    "expected_intent": "change_address",
+    "expected_response": "Customer wants to change the delivery address.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC042",
+    "category": "English",
+    "input": "Can I change the shipping address for my order?",
+    "expected_intent": "change_address",
+    "expected_response": "Customer wants to change the shipping address.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC043",
+    "category": "Singlish",
+    "input": "delivery address eka wenas karanna puluwanda?",
+    "expected_intent": "change_address",
+    "expected_response": "Customer wants to change the delivery address.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC044",
+    "category": "Code-Mixed",
+    "input": "I entered the wrong address, eka change karanna one.",
+    "expected_intent": "change_address",
+    "expected_response": "Customer wants to correct the delivery address.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC045",
+    "category": "Noisy",
+    "input": "need chnge delivry adress",
+    "expected_intent": "change_address",
+    "expected_response": "Customer wants to change the delivery address.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC046",
+    "category": "Sinhala",
+    "input": "මේ product එකේ වෙන colors තියෙනවද?",
+    "expected_intent": "product_inquiry",
+    "expected_response": "Customer is asking about available product colors.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC047",
+    "category": "English",
+    "input": "Is this product available in a larger size?",
+    "expected_intent": "product_inquiry",
+    "expected_response": "Customer is asking about product size availability.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC048",
+    "category": "Singlish",
+    "input": "me product eke wena colours thiyenawada?",
+    "expected_intent": "product_inquiry",
+    "expected_response": "Customer is asking about available product colors.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC049",
+    "category": "Code-Mixed",
+    "input": "Is this available in black? mata black colour eka one.",
+    "expected_intent": "product_inquiry",
+    "expected_response": "Customer is asking whether the product is available in black.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC050",
+    "category": "Noisy",
+    "input": "dis prodct availble in large size?",
+    "expected_intent": "product_inquiry",
+    "expected_response": "Customer is asking about product size availability.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC051",
+    "category": "Sinhala",
+    "input": "මට account එකට login වෙන්න බැහැ.",
+    "expected_intent": "account_issue",
+    "expected_response": "Customer cannot log in to their account.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC052",
+    "category": "English",
+    "input": "I forgot my password and cannot access my account.",
+    "expected_intent": "account_issue",
+    "expected_response": "Customer is unable to access their account due to a password issue.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC053",
+    "category": "Singlish",
+    "input": "account ekata login wenna ba password eka wada na",
+    "expected_intent": "account_issue",
+    "expected_response": "Customer cannot log in because of a password problem.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC054",
+    "category": "Code-Mixed",
+    "input": "My login isn't working, account ekata enter wenna ba.",
+    "expected_intent": "account_issue",
+    "expected_response": "Customer cannot access their account.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC055",
+    "category": "Noisy",
+    "input": "cant logn accnt passwrd not workng",
+    "expected_intent": "account_issue",
+    "expected_response": "Customer cannot log in to their account.",
+    "difficulty": "hard"
+  },
+
+  {
+    "id": "TC056",
+    "category": "Sinhala",
+    "input": "ඔයාලගේ service එක ගැන මම සෑහීමකට පත් වෙන්නේ නැහැ.",
+    "expected_intent": "complaint",
+    "expected_response": "Customer is expressing dissatisfaction with the service.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC057",
+    "category": "English",
+    "input": "I'm very disappointed with the service I received.",
+    "expected_intent": "complaint",
+    "expected_response": "Customer is expressing dissatisfaction with the service.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "TC058",
+    "category": "Singlish",
+    "input": "oyala dena service eka gana mama happy na",
+    "expected_intent": "complaint",
+    "expected_response": "Customer is dissatisfied with the service.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC059",
+    "category": "Code-Mixed",
+    "input": "Honestly oyalaගේ service eka very disappointing.",
+    "expected_intent": "complaint",
+    "expected_response": "Customer is expressing dissatisfaction with the service.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "TC060",
+    "category": "Noisy",
+    "input": "ur servce is realy bad not hapy at all",
+    "expected_intent": "complaint",
+    "expected_response": "Customer is expressing dissatisfaction with the service.",
+    "difficulty": "hard"
   }
 ]

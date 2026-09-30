@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
 type GeminiRequest struct {
@@ -53,42 +54,114 @@ func AskGemini(prompt string) (string, error) {
 		return "", err
 	}
 
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-	if err != nil {
-		return "", err
+	// Maximum number of attempts
+	maxAttempts := 3
+
+	for attempt := 1; attempt <= maxAttempts; attempt++ {
+
+		req, err := http.NewRequest(
+			"POST",
+			url,
+			bytes.NewBuffer(jsonData),
+		)
+
+		if err != nil {
+			return "", err
+		}
+
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("x-goog-api-key", apiKey)
+
+		client := &http.Client{
+			Timeout: 60 * time.Second,
+		}
+
+		resp, err := client.Do(req)
+
+		if err != nil {
+			if attempt < maxAttempts {
+				fmt.Printf(
+					"Request failed. Retrying (%d/%d)...\n",
+					attempt,
+					maxAttempts,
+				)
+
+				time.Sleep(time.Duration(attempt*2) * time.Second)
+				continue
+			}
+
+			return "", err
+		}
+
+		body, readErr := io.ReadAll(resp.Body)
+		resp.Body.Close()
+
+		if readErr != nil {
+			return "", readErr
+		}
+
+		// Successful request
+		if resp.StatusCode == http.StatusOK {
+
+			var geminiResponse GeminiResponse
+
+			err = json.Unmarshal(body, &geminiResponse)
+			if err != nil {
+				return "", err
+			}
+
+			if len(geminiResponse.Candidates) == 0 ||
+				len(geminiResponse.Candidates[0].Content.Parts) == 0 {
+
+				return "", fmt.Errorf(
+					"Gemini returned no response",
+				)
+			}
+
+			return geminiResponse.Candidates[0].
+				Content.Parts[0].Text, nil
+		}
+
+		// Retry temporary errors:
+		// 429 = rate limit
+		// 500/502/503/504 = temporary server problems
+		if resp.StatusCode == 429 ||
+			resp.StatusCode == 500 ||
+			resp.StatusCode == 502 ||
+			resp.StatusCode == 503 ||
+			resp.StatusCode == 504 {
+
+			if attempt < maxAttempts {
+
+				fmt.Printf(
+					"Temporary Gemini API error (%d). Retrying (%d/%d)...\n",
+					resp.StatusCode,
+					attempt,
+					maxAttempts,
+				)
+
+				// Simple increasing delay:
+				// attempt 1 -> 2 seconds
+				// attempt 2 -> 4 seconds
+				time.Sleep(
+					time.Duration(attempt*2) * time.Second,
+				)
+
+				continue
+			}
+		}
+
+		// Permanent error or all retries failed
+		return "", fmt.Errorf(
+			"Gemini API error after %d attempt(s): status %d: %s",
+			attempt,
+			resp.StatusCode,
+			string(body),
+		)
 	}
 
-	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("x-goog-api-key", apiKey)
-
-	client := &http.Client{}
-
-	resp, err := client.Do(req)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
-	}
-
-	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("Gemini API error: %s", string(body))
-	}
-
-	var geminiResponse GeminiResponse
-
-	err = json.Unmarshal(body, &geminiResponse)
-	if err != nil {
-		return "", err
-	}
-
-	if len(geminiResponse.Candidates) == 0 ||
-		len(geminiResponse.Candidates[0].Content.Parts) == 0 {
-		return "", fmt.Errorf("Gemini returned no response")
-	}
-
-	return geminiResponse.Candidates[0].Content.Parts[0].Text, nil
+	return "", fmt.Errorf(
+		"Gemini request failed after %d attempts",
+		maxAttempts,
+	)
 }
