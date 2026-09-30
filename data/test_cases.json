@@ -2,25 +2,25 @@
   {
     "id": "TC001",
     "category": "Sinhala",
-    "input": "මගේ order එක තාම ආවේ නැහැ.",
+    "input": "මගේ order එකේ current status එක මොකක්ද?",
     "expected_intent": "order_status",
-    "expected_response": "Customer is asking about an order that has not arrived.",
+    "expected_response": "Customer is asking for the current status of an order.",
     "difficulty": "easy"
   },
   {
     "id": "TC002",
     "category": "Singlish",
     "input": "mage order eka thama awe na",
-    "expected_intent": "order_status",
-    "expected_response": "Customer is asking about an order that has not arrived.",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer is reporting that the order has not arrived yet.",
     "difficulty": "medium"
   },
   {
     "id": "TC003",
     "category": "Code-Mixed",
     "input": "mage order eka still delivered une na, can you check?",
-    "expected_intent": "order_status",
-    "expected_response": "Customer wants the delivery status of an order.",
+    "expected_intent": "delivery_issue",
+    "expected_response": "Customer is reporting that the order has not been delivered yet.",
     "difficulty": "medium"
   }
 ]
