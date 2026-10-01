@@ -1,0 +1,8 @@
+node_modules/
+dist/
+src/data/evaluation.json
+*.tsbuildinfo
+playwright-report/
+test-results/
+.baseline-hashes.json
+.env*

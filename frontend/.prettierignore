@@ -1,0 +1,7 @@
+node_modules/
+dist/
+src/data/
+test-results/
+playwright-report/
+package-lock.json
+.baseline-hashes.json
